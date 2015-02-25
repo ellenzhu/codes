@@ -1,0 +1,15 @@
+    {% if game.image %}
+          <img  src="{% static '' %}{{game.image}}" alt="Generic placeholder image" style="width: 140px; height: 140px;"></img>
+        {% endif %}
+
+<form class="navbar-form navbar-left">
+              <input type="text" class="form-control" placeholder="Search...">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+
+          </form>

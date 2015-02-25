@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+  
+
+  
+  {% for field in user_form %}
+    {{field.error}}
+
+  {% endfor %}
+    {% for field in profile_form %}
+    {{field.error}}
+
+  {% endfor %}
+
+        {% if registered %}
+        <strong>Thank you for registering!</strong>
+            <br />
+              <p> <a href="/accounts/login/">Login</a> </p>
+        {% else %}
+        <strong>Register and have fun!</strong><br />
+
+        <form id="user_form" method="post" action="/accounts/register2/"
+                enctype="multipart/form-data">
+
+            {% csrf_token %}
+             {% bootstrap_form user_form %}
+             {% bootstrap_form profile_form %}
+            <!-- Display each form. The as_p method wraps each element in a paragraph
+                 (<p>) element. This ensures each element appears on a new line,
+                 making everything look neater. -->
+
+            <!-- Provide a button to click to submit the form. -->
+            <input type="submit" name="submit" value="Register" />
+        </form>
+        {% endif %}
+{% endblock %}

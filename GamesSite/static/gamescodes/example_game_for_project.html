@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Game</title>
+  <meta charset="utf-8"/>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script>
+  /* global $, alert */
+
+  $(document).ready( function() {
+    "use strict";
+
+    // These variable track the state of this "game"
+    var playerItems = [];
+    var score = 0;
+
+    // Simulates "game over" when a score would be sent
+    $("#submit_score").click( function () {
+      var msg = {
+        "messageType": "SCORE",
+        "score": parseFloat($("#score").val())
+      };
+      window.parent.postMessage(msg, "*");
+    });
+
+    // Sends this game's state to the service.
+    // The format of the game state is decided
+    // by the game
+    $("#save").click( function () {
+      var msg = {
+        "messageType": "SAVE",
+        "gameState": {
+          "playerItems": playerItems,
+          "score": parseFloat($("#score").val())
+        }
+      };
+      window.parent.postMessage(msg, "*");
+    });  
+
+    // Sends a request to the service for a 
+    // state to be sent, if there is one.
+    $("#load").click( function () {
+      var msg = {
+        "messageType": "LOAD_REQUEST",
+      };
+      window.parent.postMessage(msg, "*");
+    });
+
+    // Listen incoming messages, if the messageType
+    // is LOAD then the game state will be loaded.
+    // Note that no checking is done, whether the
+    // gameState in the incoming message contains
+    // correct information.
+    // 
+    // Also handles any information that the service
+    // wants to send (displays them as an alert).
+    window.addEventListener("message", function(evt) {
+      if(evt.data.messageType === "LOAD") {
+        playerItems = evt.data.gameState.playerItems;
+        score = evt.data.gameState.score;
+        $("#score").val(score);
+        updateItems();
+      } else if (evt.data.messageType === "MESSAGE") {
+        alert(evt.data.message);
+      }
+    });
+
+    // This is part of the mechanics of the "game"
+    // it does not relate to the messaging with the
+    // service. 
+    //
+    // Adds an item to the players inventory
+    $("#add_item").click( function () {
+      playerItems.push($("#new_item").val());
+      $("#new_item").val("");
+      updateItems();
+    });
+
+    // This is part of the mechanics of the "game"
+    // it does not relate to the messaging with the
+    // service. 
+    //
+    // "Redraws" the inventory of the player. Used
+    // when items are added or the game is loaded
+    function updateItems() {
+      $("#item_list").html("");
+      for (var i = playerItems.length - 1; i >= 0; i--) {
+        $("#item_list").append("<li>" + playerItems[i] + "</li>");
+      }
+    }
+
+  });
+  </script>
+</head>
+<body>
+  
+  <input type="text" id="new_item">
+  <button id="add_item">Add item</button>
+  
+  <h3>Items</h3>
+  <ul id="item_list"></ul>
+  
+  <input type="text" id="score" name="score">
+  <button id="submit_score">Submit score</button><br>
+
+  <button id="save">Save</button>
+  <button id="load">Load</button>
+</body>
+</html>

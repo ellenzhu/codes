@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block sidebar %}
+<ul>
+    <li><a href="/games/all">Cancel</a></li>
+</ul>
+{% endblock %}
+
+
+
+{% block content %}
+    <div>
+<form action="/games/create_game/" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+                 {% bootstrap_form form %}
+
+
+<input type="submit" name="submit" value="Create Game">
+</form>
+</div>
+{% endblock %}
+

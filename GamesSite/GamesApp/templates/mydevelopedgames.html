@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+<!--
+<h2>Language is: {{language}}</h2>
+
+<h2>Session Language is: {{session_language}}</h2>
+-->
+{% if games.count > 0 %}
+
+{% for game in games %}
+
+
+        <div class="col-lg-4">
+        {% if game.image %}
+            <p><img class="img-circle" src={% static '' %}{{game.image}} style=" width:140px; height: 140px; " /></p>
+        {% endif %}
+
+          <h2><a href="/games/get/{{ game.id }}/">{{ game.game_name }}</a></h2>
+          <p>{{game.description}}</p>
+            <p>The number of purchased games is: {{game.players.count}}</p>
+            <p><a class="btn btn-default" href=/games/get/{{ game.id }} role="button">View details &raquo;</a>
+			<a class="btn btn-default" href="/games/salehistory/{{game.id}}" role="button">Sale history &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+
+
+  <!--  <div>
+    <h2><a href="/games/get/{{ game.id }}/">{{ game.game_name }}</a></h2>
+        <p><a>{{game.description}}</a></p>
+       <li><a href="/games/delete_game/{{ game.id }}/">Delete Game</a></li>
+    </div> -->
+
+{% endfor %}
+
+{% else %}
+
+<p>None to show!</p>
+
+{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+	<form method="POST" action="" id="gamestateform">
+	{% csrf_token %}
+		<input id="msgtype" name="msgtype" type="hidden"/>
+		<input id="gamestate" name="gamestate" type="hidden"/>
+		<input id="score" name="score" type="hidden"/>
+		<input type="submit" name="submitgamemsg" id="submitgamemsg" style="visibility:hidden"/>
+	</form>
+	
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="embed-responsive embed-responsive-16by9">
+
+
+			<!-- {% static 'gamecodes/game1.html' %} -->
+            <iframe class="embed-responsive-item" id="encoder_iframe" name="encoder_iframe" src="{% static 'gamescodes/example_game_for_project.html' %}"
+            allowfullscreen=""></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="text-center text-danger">Message</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+		<!--
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <a class="btn btn-primary">Save</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <a class="btn btn-primary">Load</a>
+          </div>
+        </div>
+		-->
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <a class="btn btn-primary" href = "/games/score/{{game.id}}/">Highscores</a>
+          </div>
+        </div>
+            <ul id="actions">
+  </ul>
+      </div>
+    </section>
+	
+<script type="text/javascript">
+$(function () {  
+	// load so that the iframe's content is ready to receive our messages
+    $("#encoder_iframe").load(function () {
+		var gamestateLoad = '{{gameState|safe}}';
+		if (gamestateLoad != "") {
+			// change from JSON string to JSON object
+			gamestateLoad = JSON.parse(gamestateLoad);
+			//console.log("if gameState != '': --- gameState: " + gamestateLoad);
+			var msg = {
+				"messageType": "LOAD",
+				"gameState": gamestateLoad
+			};
+			//console.log("iframe.contentWindow: "+$("#encoder_iframe").get(0).contentWindow);
+			// send the message (gamestate / game information / 'savefile') to the iframe
+			$("#encoder_iframe").get(0).contentWindow.postMessage(msg, "*");
+		};
+		//console.log('{{gameState|safe}}');
+		var serviceMessage = '{{serviceMessage}}';
+		if (serviceMessage != "") {
+			var msg = {
+				"messageType": "MESSAGE",
+				"message": serviceMessage
+			};
+			// send the message to the iframe
+			$("#encoder_iframe").get(0).contentWindow.postMessage(msg, "*");
+		};
+    });
+});
+
+$(document).ready( function() {
+	// Event listeners here for receiving the messages from the iframe (the game)
+	window.addEventListener("message", function(evt) {
+		if(evt.data.messageType === "LOAD_REQUEST") {
+			$("#msgtype").val("LOAD_REQUEST");
+			$("#gamestateform").submit();
+		} else if (evt.data.messageType === "SAVE") {
+			// change JSON object into JSON string
+			var gameState = JSON.stringify(evt.data.gameState);
+			// change values in the hidden form
+			$("#msgtype").val("SAVE");
+			$("#gamestate").val(gameState);
+			// submit the form so that the django view can handle it
+			$("#gamestateform").submit();
+		} else if (evt.data.messageType === "SCORE") {
+			var score = evt.data.score;
+			// change values in the hidden form
+			$("#score").val(score);
+			$("#msgtype").val("SCORE");
+			// submit the form so that the django view can handle it
+			$("#gamestateform").submit();
+		}
+    });
+});
+</script>
+{% endblock %}

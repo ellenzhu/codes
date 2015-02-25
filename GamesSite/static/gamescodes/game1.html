@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>reverser service</title>
+  <meta charset="utf-8">
+  <script src= "http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/atsepkov/RapydScript/master/examples/asteroids/output/asteroids.js"></script>
+
+  <script type="text/javascript">
+	$( document ).ready(function() 
+	{
+		var msg ={};
+		// Set focus on the input-mask  
+		$("#toBeReversed") .focus();
+		
+		//
+		$( "#submitReverser" ).on("click", function(event){
+			event.preventDefault();
+
+			msg.payload = reverseString(document.reverser.toBeReversed.value).payload;
+			
+			window.parent.postMessage( msg, "*");
+			console.log(msg.payload)
+			$("#toBeReversed") .focus();
+			document.reverser.toBeReversed.value="";
+		});
+		
+		$( "#clearInput" ).on("click", function(event){
+			msg.payload = "INPUT CLEARED";
+			window.parent.postMessage( msg, "*");
+			document.reverser.toBeReversed.value="";
+			$("#toBeReversed") .focus();
+			console.log(msg.payload)			
+		});
+	})
+		
+	function reverseString(str)
+	{
+		var ReversedString = {};
+		ReversedString.payload = str.split('').reverse().join('');
+		return ReversedString;
+	}
+  </script>
+  
+</head>
+
+<body onload="runGame();">
+<form  name="reverser">
+<input id="toBeReversed" name="input_text" text>
+<input id="submitReverser" name="submitButton" type="submit" value="Send Message">
+    <button id="clearInput">Clear Input</button>
+        <button id="clearInput">Save</button>
+            <button id="clearInput">Load</button>
+            <button id="clearInput">Score</button>
+</form>
+
+
+
+<br>
+<canvas id="myCanvas" width="800" height="600">
+Upgrade your browser.
+</canvas>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+	<h2>Payment information:</h2>
+	<p><b>Game:</b> {{gameName}}</p>
+	<p><b>Amount:</b> {{amount}} &euro;</p>
+</div>
+
+<form action="http://payments.webcourse.niksula.hut.fi/pay/" method="POST">
+{% csrf_token %}
+    <input type="hidden" name="pid" value="{{pid}}" />
+    <input type="hidden" name="sid" value="{{sid}}" />
+    <input type="hidden" name="success_url" 
+            value="http://sheltered-earth-9730.herokuapp.com/games/buy/payment/success" />
+    <input type="hidden" name="cancel_url" 
+            value="http://sheltered-earth-9730.herokuapp.com/games/buy/payment/cancel" />
+    <input type="hidden" name="error_url" 
+            value="http://sheltered-earth-9730.herokuapp.com/games/buy/payment/error" />
+    <input type="hidden" name="checksum" 
+            value="{{checksum}}" />
+    <input type="hidden" name="amount" value="{{amount}}" />
+    <p><input type="submit" value="Accept Payment"/></p>
+</form>
+
+{% endblock %}

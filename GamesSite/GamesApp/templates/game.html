@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center">{{ game.game_name }}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center" style="">
+            {% if game.image %}
+          <img src={% static '' %}{{game.image}} class="center-block img-responsive">
+            {% endif %}
+          <hr>
+          <p class="text-center">{{ game.description }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <hr>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-12">
+          <p>Price&nbsp:&nbsp{{ game.price }}</p>
+        </div>
+      </div>
+
+
+          <div class="row">
+        <div class="col-md-12">
+          <hr>
+      <div class="row text-center">
+        <div class="col-md-12">
+          <a class="btn btn-primary" href="/games/buy/{{game.id}}">Buy</a>
+		  <a class="btn btn-primary" href="/games/play/{{ game.id }}">Play</a>
+		  <a class="btn btn-primary" href="/games/score/{{game.id}}">Highscores</a>
+          {% if Developer %} <a class="btn btn-primary" href="/games/edit/{{ game.id }}">Edit</a> {% endif %}
+         {% if Developer %} <a class="btn btn-primary" href="/games/delete_game/{{ game.id }}">Delete</a> {% endif %}
+
+        </div>
+      </div>
+     <div class="row">
+        <div class="col-md-12">
+          <hr>
+        </div>
+      </div>
+          <div class="row text-center">
+        <div class="col-md-12">
+        <a class="fa fa-facebook-square fa-4x" style = "color:#3b5998" href="https://www.facebook.com/dialog/feed?
+        app_id=1534802396772090
+        &display=popup&caption=Check%20this%20amazing%20game%20on%20CrazyOoGames
+        &link=http://sheltered-earth-9730.herokuapp.com/games/get/{{ game.id }}
+        &picture=http://sheltered-earth-9730.herokuapp.com
+        &redirect_uri=http://sheltered-earth-9730.herokuapp.com/games/all"> </a>
+
+            <a class="fa fa-facebook-square fa-4x" style = "color:#3b5998" href="https://www.facebook.com/sharer/sharer.php%20?s=100%20&p[title]=Example%20Title%20&p[summary]=Example%20description%20text%20&p[url]=http://sheltered-earth-9730.herokuapp.com/{{ game.id }}"> </a>
+
+            <a class="fa fa-twitter-square fa-4x" style = "color:#4099FF" href="https://twitter.com/home?status=Check%20amazing%20games%20at%20crazygames.com%20http://sheltered-earth-9730.herokuapp.com/games/get/{{ game.id }}"> </a>
+            <a class="fa fa-linkedin-square fa-4x" style = "color:#3b5970" href="https://www.linkedin.com/shareArticle?mini=true&url=http://sheltered-earth-9730.herokuapp.com/games/get/{{ game.id }}&title=Play%20crazy%20games&summary=This%20site%20has%20amazing%20games%20that%20you%20would%20never%20find%20somewhere%20else&source=http://sheltered-earth-9730.herokuapp.com/"> </a>
+            <a class="fa fa-google-plus-square fa-4x"  style = "color:#d34836" href="https://plus.google.com/share?url=http://sheltered-earth-9730.herokuapp.com/games/get/{{ game.id }}"> </a>
+
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+{% endblock %}

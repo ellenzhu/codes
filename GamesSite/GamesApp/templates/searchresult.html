@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+{% if games.count > 0 %}
+Happy day! we found a game for you :)
+     <hr>
+{% for game in games %}
+        <li><a href="/games/get/{{ game.id }}">{{ game.game_name }}</a></li>
+{% endfor %}
+
+{% else %}
+
+<li>None to show!</li>
+
+{% endif %}
+ <hr>
+      <div class="row text-center">
+        <div class="col-md-12">
+          <a class="btn btn-primary" href="/games/all/">Back Home</a>
+
+        </div>
+      </div>
+{% endblock %}

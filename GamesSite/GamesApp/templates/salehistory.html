@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+        <div class="col-lg-4">
+        {% if game.image %}
+            <p><img class="img-circle" src={% static '' %}{{game.image}} style=" width:140px; height: 140px; " /></p>
+        {% endif %}
+
+          <h2><a href="/games/get/{{ game.id }}/">{{ game.game_name }}</a></h2>
+          <p>{{game.description}}</p>
+            <p>The number of purchased games is: {{game.players.count}}</p>
+            <p><a class="btn btn-default" href=/games/get/{{ game.id }} role="button">View details &raquo;</a>
+			<p></p>
+			<p></p>
+			<h2>Sale history</h2>
+			{% for payment in payments %}
+			<p>{{payment.created_on}}</p>
+			{% endfor %}
+        </div><!-- /.col-lg-4 -->
+
+{% endblock %}

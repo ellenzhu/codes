@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>Highscores</h1>
+<table border="1" style="width:50%; text-align:center">
+	<tr>
+		<th style="text-align:center">Player</th>
+		<th style="text-align:center">Score</th>
+	</tr>
+	{% for score in scores %}
+	<tr>
+		<td>{{score.name.user.username}}</td>
+		<td>{{score.score}}</td>
+	</tr>
+	{% endfor %}
+</table>
+<!--
+<ul>
+	<li>Score -- Player</li>
+	{% for score in scores %}
+	<li>{{score.score}}	-- {{score.name.user.username}}</li>
+	{% endfor %}
+</ul>
+-->
+{% endblock %}
