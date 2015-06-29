@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/add_people"
+        android:title="@string/add_contact"
+        android:icon="@drawable/ic_6_social_add_person"
+        app:showAsAction="always" />
+
+</menu>

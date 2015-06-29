@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/continue_with_terms"
+        android:title="@string/continue_with_terms"
+        app:showAsAction="withText|always" />
+
+</menu>

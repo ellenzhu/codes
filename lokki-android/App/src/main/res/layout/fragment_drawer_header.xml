@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav_drawer_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start"
+    android:paddingBottom="@dimen/nav_drawer_vertical_padding"
+    android:paddingLeft="@dimen/nav_drawer_horizontal_padding"
+    android:paddingRight="@dimen/nav_drawer_horizontal_padding"
+    style="@style/DarkBackground">
+
+    <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/avatar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="@dimen/nav_drawer_horizontal_padding"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_avatar"
+        app:riv_border_color="#215fcc"
+        app:riv_border_width="0dp"
+        app:riv_corner_radius="100dp"
+        app:riv_mutate_background="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_drawer_lokki_id_height"
+        android:layout_below="@id/avatar"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/lokki_id_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/your_lokki_id"
+            android:textColor="@android:color/primary_text_dark"
+            android:textSize="@dimen/default_text_size" />
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lokki_id_label"
+            android:textStyle="bold"
+            android:textColor="@android:color/primary_text_dark"
+            android:textSize="@dimen/default_text_size" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+

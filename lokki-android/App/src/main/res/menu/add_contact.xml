@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/allow_people"
+        android:title="@string/add_email"
+        app:showAsAction="withText|always" />
+
+</menu>

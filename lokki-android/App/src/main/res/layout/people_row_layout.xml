@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dip">
+
+    <LinearLayout
+        android:id="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dip"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginRight="5dip"
+        android:layout_marginEnd="5dp" >
+
+        <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/contact_photo"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:onClick="showUserInMap"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="100dip"
+            app:riv_border_width="0dip" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/contact_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/thumbnail"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:layout_toEndOf="@+id/thumbnail"
+        android:textColor="#040404"
+        android:typeface="sans"
+        android:layout_marginTop="0dp"
+        android:textSize="15sp"
+        android:ellipsize="end"
+        android:scrollHorizontally="true"
+        android:layout_toLeftOf="@+id/i_can_see"
+        android:layout_toStartOf="@+id/i_can_see"
+        android:singleLine="true"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/contact_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contact_name"
+        android:textColor="#343434"
+        android:textSize="12sp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:scrollHorizontally="true"
+        android:layout_marginTop="1dip"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:layout_toEndOf="@+id/thumbnail"
+        android:layout_toLeftOf="@+id/i_can_see"
+        android:layout_toStartOf="@+id/i_can_see" />
+
+    <TextView
+        android:id="@+id/last_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contact_email"
+        android:textColor="#343434"
+        android:textSize="12sp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:scrollHorizontally="true"
+        android:layout_marginTop="1dip"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:layout_toEndOf="@+id/thumbnail"
+        android:layout_toLeftOf="@+id/i_can_see"
+        android:layout_toStartOf="@+id/i_can_see" />
+
+    <CheckBox
+        android:id="@+id/can_see_me"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="13dp"
+        android:gravity="end"
+        android:onClick="toggleUserCanSeeMe"
+        android:layout_marginRight="5dip"
+        android:layout_marginEnd="5dip" />
+
+    <CheckBox
+        android:id="@+id/i_can_see"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="13dp"
+        android:gravity="end"
+        android:onClick="toggleIDontWantToSee"
+        android:layout_marginRight="70dp"
+        android:layout_marginEnd="70dp" />
+
+</RelativeLayout>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--TODO: organize strings better-->
+
+    <string name="app_name">Lokki</string>
+    <string name="app_long_name">Lokki</string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="map">Map</string>
+    <string name="places">Places</string>
+    <string name="contacts">Contacts</string>
+    <string name="about">About</string>
+    <string name="visibility">Visibility</string>
+    <string name="send">Send</string>
+    <string name="map_mode">Map mode</string>
+    <string name="help">Help</string>
+    <string name="settings">Settings</string>
+    <string name="delete">Delete</string>
+    <string name="rename">Rename</string>
+
+    <string name="loading">Loading…</string>
+
+    <string name="send_feedback">Send feedback</string>
+    <string name="error_send_email_title">Cannot send email</string>
+    <string name="error_send_email_message">We could not find your email app.\nContact us at: https://github.com/TheSoftwareFactory/lokki-android/</string>
+    <string name="share">Tell your friends about this app</string>
+    <string name="share_subject">Join me on Lokki!</string>
+    <string name="share_text">Hi! I\'m using Lokki, the private location sharing app that\'s easy, secure, and free. Go to https://github.com/TheSoftwareFactory/lokki-android/ to install it.</string>
+    <string name="add_contacts">Add contacts</string>
+    <string name="add_contact">Add contact</string>
+    <string name="allow_people">Allow people</string>
+    <string name="add_contact_dialog_message">Select the people who can see where you are when you allow it. Choose the email addresses that your contacts use in Lokki. If you don\'t find a person or email in this list, please add him or her first via the People or Contacts app.</string>
+    <string name="add_contact_dialog_save">Do you want to add %1$s?</string>
+    <string name="i_can_see">Show on map</string>
+    <string name="can_see_me">Can see me</string>
+    <string name="your_lokki_id">Your Lokki ID is:</string>
+    <string name="your_friends">Tell your friends to use this email with Lokki.</string>
+    <string name="privacy_policy_title">Privacy policy</string>
+    <string name="my_visibility">My contacts can see me</string>
+    <string name="privacy_policy_text">placeholder</string>
+    <string name="license_link"><![CDATA[<a href=\"\">License terms</a>]]></string>
+    <string name="version">Version: %1$s</string>
+    <string name="title_activity_first_time">FirstTimeActivity</string>
+    <string name="i_agree">I have read and I agree</string>
+    <string name="continue_with_terms">Continue</string>
+    <string name="welcome_title">Welcome to Lokki</string>
+    <string name="welcome_text"><![CDATA[ <b>Welcome to Lokki 4.0!</b><br/>Now you can see where your friends and family members are on a map. You choose who can see where you are, and you can hide your location whenever you want.]]></string>
+
+    <string name="terms_text">
+                                <![CDATA[ Before you get started, you need to agree to the following terms:<br/><br/><br/>
+                              1. I have read the terms of service and accept them.<br/><br/>
+                              2. I consent to the collection and processing of personal data.<br/><br/>
+                              3. I consent that the service can process and display my location.<br/><br/>
+                              4. If I am under 15, I have my parents’ permission to use Lokki according to these terms.<br/><br/>
+                              5. If I am under 13 and living in the United States, I may not use Lokki.<br/><br/><br/>]]>
+    </string>
+
+    <string name="terms_title">Terms of use</string>
+    <string name="security_sign_up">We need to authorize your account before you sign up. Follow the instructions that we have sent to: %1$s</string>
+    <string name="title_activity_sign_up">Sign up</string>
+    <string name="sign_up_explanation">Enter your email address - other Lokki users will find you with this address.</string>
+    <string name="type_your_email_address">Your email address</string>
+    <string name="general_error">There was an error. Please try again later.</string>
+    <string name="create_place">Would you like to create a place here?</string>
+    <string name="write_place_name">Enter a name for this place</string>
+    <string name="delete_place">Do you want to remove this place?</string>
+    <string name="will_be_deleted_from_places">will be removed from your places</string>
+    <string name="rename_place">Rename %1$s?</string>
+    <string name="place_created">Place created</string>
+    <string name="place_removed">Place removed</string>
+    <string name="place_renamed">Place renamed </string>
+    <string name="place_limit_reached">You cannot create more places. Maximum limit reached.</string>
+    <string name="dashboard_view">map/places</string>
+    <string name="you_are_visible">You are now VISIBLE</string>
+    <string name="you_are_invisible">You are now INVISIBLE</string>
+    <string name="places_how_to_create">To create a new place go to the map and long press the location where to place is located. Then type a name and click OK.</string>
+    <string name="search_contacts">Search contacts…</string>
+
+    <string name="map_mode_default">Default</string>
+    <string name="map_mode_satellite">Satellite</string>
+    <string name="map_mode_hybrid">Hybrid</string>
+
+    <string name="about_link_tell_a_friend">Tell a friend about Lokki</string>
+    <string name="lokki_github_repo_link">https://github.com/TheSoftwareFactory/lokki-android/</string>
+    <string name="no_contact_selected_toast">No contact selected</string>
+    <string name="email_required">An email address is required.</string>
+    <string name="required">Required.</string>
+    <string name="place_name_already_in_use">Name is already in use</string>
+    <string name="add_place">Add place</string>
+    <string name="gps_disabled">Lokki needs access to your location. Please turn on location access.</string>
+    <string name="ignore">Ignore</string>
+    <string name="location_services_disabled">Location services disabled</string>
+    <string name="contact_added">Contact added</string>
+    <string name="contact_email_address">Contact email address</string>
+    <string name="add_email">Add email</string>
+
+    <string name="logout">Logout</string>
+
+    <string name="place_name">Place Name</string>
+
+</resources>

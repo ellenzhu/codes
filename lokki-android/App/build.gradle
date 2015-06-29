@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion '22.0.1'
+    lintOptions {
+        abortOnError false
+    }
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 400
+        versionName "4.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    productFlavors {
+        development {}
+        production {}
+    }
+
+    sourceSets {
+        androidTest {
+            setRoot('src/test')
+        }
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def apk = output.outputFile;
+            def newName;
+
+            newName = apk.name.replace(project.name, "lokki");
+            newName = newName.replace("-" + variant.buildType.name, "")
+            newName = newName.replace(".apk", "-v" + defaultConfig.versionName + "-" + variant.buildType.name + ".apk");
+
+            if (output.zipAlign) {
+                output.outputFile = new File(apk.parentFile, newName.replace("-unaligned", ""));
+            } else {
+                output.outputFile = new File(apk.parentFile, newName);
+            }
+
+            logger.info('INFO: Set outputFile to ' + output.outputFile + " for [" + output.name + "]");
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.google.android.gms:play-services-gcm:7.3.0'
+    compile 'com.google.android.gms:play-services-maps:7.3.0'
+    compile 'com.google.android.gms:play-services-location:7.3.0'
+    compile 'com.makeramen:roundedimageview:2.0.1'
+    compile files('libs/android-query.0.26.7.jar')
+    compile(name:'android-support-v4-preferencefragment-master-release', ext:'aar')
+
+    compile 'com.android.support:support-annotations:21.0.3'
+
+    // Espresso
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
+    androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
+    androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.0') {
+        exclude group: 'com.android.support'
+    }
+
+    // Mockito
+    androidTestCompile 'org.mockito:mockito-core:1.9.5'
+    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.1'
+    androidTestCompile 'com.google.dexmaker:dexmaker:1.1'
+
+    // MockWebServer
+    androidTestCompile 'com.squareup.okhttp:mockwebserver:2.3.0'
+
+    // Android-compatible but recent version of HttpClient
+    androidTestCompile group: 'org.apache.httpcomponents' , name: 'httpclient-android' , version: '4.3.5.1'
+}
